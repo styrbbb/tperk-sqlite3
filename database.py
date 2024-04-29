@@ -2,10 +2,16 @@ import ttkbootstrap as ttk
 from tkinter import *
 from ttkbootstrap.tableview import Tableview
 from ttkbootstrap.constants import *
-from database_sources import r_set,l1
+#from database_sources import r_set,l1
+from sqlalchemy import create_engine
+
+conn = create_engine("sqlite:///C:\\tperk-sqlite3\\epood_tperk.db")
+r_set=conn.execute("SELECT * FROM tperk")
+l1=[r for r in r_set.keys()] # List of column headers 
+r_set = [list(r) for r in r_set]
 
 app = ttk.Window(themename="darkly")
-app.geometry("750x500")
+app.geometry("750x400")
 colors = app.style.colors
 
 
